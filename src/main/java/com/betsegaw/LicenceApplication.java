@@ -18,13 +18,9 @@ public class LicenceApplication extends Application{
 	@Override
 	public void init() throws Exception {
 		springContext = SpringApplication.run(LicenceApplication.class);
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("licence.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("licence.fxml"));
 		fxmlLoader.setControllerFactory(springContext::getBean);
 		root = fxmlLoader.load();
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(LicenceApplication.class, args);
 	}
 
 	@Override
@@ -40,4 +36,8 @@ public class LicenceApplication extends Application{
 		springContext.stop();
 	}
 
+	public static void main(String[] args) {
+
+		launch(LicenceApplication.class,args);
+	}
 }
