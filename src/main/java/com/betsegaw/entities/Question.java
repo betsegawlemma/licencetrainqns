@@ -33,7 +33,8 @@ public class Question {
     public void removeChoice(Choice choice){
         this.choices.remove(choice);
     }
-    private Choice answer;
+    @Enumerated(value = EnumType.STRING)
+    private Letter answer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
@@ -44,7 +45,7 @@ public class Question {
     public Question() {
     }
 
-    public Question(String questionDescription, Set<Choice> choices, Choice answer, Category category, Byte[] questionImage) {
+    public Question(String questionDescription, Set<Choice> choices, Letter answer, Category category, Byte[] questionImage) {
         this.questionDescription = questionDescription;
         this.choices = choices;
         this.answer = answer;

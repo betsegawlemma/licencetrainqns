@@ -7,6 +7,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Lob;
 
 @Getter
@@ -16,7 +18,8 @@ import javax.persistence.Lob;
 @Embeddable
 public class Choice {
 
-    String letter;
+    @Enumerated(value = EnumType.STRING)
+    Letter letter;
     String choiceDescription;
 
     @Lob
@@ -25,7 +28,7 @@ public class Choice {
     public Choice() {
     }
 
-    public Choice(String letter, String choiceDescription, Byte[] image) {
+    public Choice(Letter letter, String choiceDescription, Byte[] image) {
         this.letter = letter;
         this.choiceDescription = choiceDescription;
         this.choiceImage = image;

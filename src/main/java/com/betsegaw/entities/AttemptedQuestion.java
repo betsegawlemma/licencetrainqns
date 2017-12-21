@@ -24,7 +24,8 @@ public class AttemptedQuestion {
     @OneToOne
     @JoinColumn(name = "question_id")
     private Question question;
-    private Choice attemptedAnswer;
+    @Enumerated(value = EnumType.STRING)
+    private Letter attemptedAnswer;
 
     @ManyToOne(cascade = CascadeType.PERSIST,fetch=FetchType.LAZY)
     private TestTaker testTaker;
@@ -32,7 +33,7 @@ public class AttemptedQuestion {
     public AttemptedQuestion() {
     }
 
-    public AttemptedQuestion(Date testDate, Question question, Choice attemptedAnswer, TestTaker testTaker) {
+    public AttemptedQuestion(Date testDate, Question question, Letter attemptedAnswer, TestTaker testTaker) {
         this.testDate = testDate;
         this.question = question;
         this.attemptedAnswer = attemptedAnswer;
